@@ -222,33 +222,33 @@ function start {
     #
     ###
 
-    create_symlink $ORIGIN_HOME_FOLDER/dotfiles/            .gitconfig			$HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER/dotfiles/            .npmrc				$HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      bin					$HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      dotfiles   			$HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      tmp                 $HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      todo                $HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .aws				$HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .cert				$HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .gnupg				$HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .kube				$HOME_FOLDER					            0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .ssh				$HOME_FOLDER					            0 0
+    create_symlink $ORIGIN_HOME_FOLDER/dotfiles/            .gitconfig          $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER/dotfiles/            .npmrc              $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      bin                 $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      dotfiles            $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      tmp                 $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      todo                $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      .aws                $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      .cert               $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      .gnupg              $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      .kube               $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      .ssh                $HOME_FOLDER                                0 0
 
     create_symlink $ORIGIN_HOME_FOLDER/.config              locale.conf         $HOME_FOLDER/.config                        0 0
-    create_symlink $ORIGIN_HOME_FOLDER/.config/go           env         		$HOME_FOLDER/.config/go                     0 0
-    create_symlink $ORIGIN_HOME_FOLDER/.config/gcloud       configurations		$HOME_FOLDER/.config/gcloud                 0 0
-    create_symlink $ORIGIN_HOME_FOLDER/.config/gcloud       active_config		$HOME_FOLDER/.config/gcloud                 0 0
+    create_symlink $ORIGIN_HOME_FOLDER/.config/go           env                 $HOME_FOLDER/.config/go                     0 0
+    create_symlink $ORIGIN_HOME_FOLDER/.config/gcloud       configurations      $HOME_FOLDER/.config/gcloud                 0 0
+    create_symlink $ORIGIN_HOME_FOLDER/.config/gcloud       active_config       $HOME_FOLDER/.config/gcloud                 0 0
 
-    #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list		$HOME_FOLDER/.config                        0 0
+    #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.config                        0 0
     # Next line because some apps still write into deprecated .local/share/applications/mimeapps.list
-    #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list		$HOME_FOLDER/.local/share/applications		0 0
+    #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.local/share/applications      0 0
 
     # Not needed:
-    #create_symlink $ORIGIN_HOME_FOLDER/.local/share/       Steam				$HOME_FOLDER/.local/share		            0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     docs				$HOME_FOLDER/Documents			            0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     images      		$HOME_FOLDER/Pictures			            0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     videos			    $HOME_FOLDER/Videos				            0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     audio				$HOME_FOLDER/Music				            0 0
+    #create_symlink $ORIGIN_HOME_FOLDER/.local/share/       Steam               $HOME_FOLDER/.local/share                   0 0
+    #create_symlink $ORIGIN_HOME_FOLDER                     docs                $HOME_FOLDER/Documents                      0 0
+    #create_symlink $ORIGIN_HOME_FOLDER                     images              $HOME_FOLDER/Pictures                       0 0
+    #create_symlink $ORIGIN_HOME_FOLDER                     videos              $HOME_FOLDER/Videos                         0 0
+    #create_symlink $ORIGIN_HOME_FOLDER                     audio               $HOME_FOLDER/Music                          0 0
 
     #
     # end - SETTING UP THE SYMLINKS
