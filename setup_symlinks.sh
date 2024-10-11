@@ -218,7 +218,7 @@ function start {
     # create_symlink <source parent folder> <target folder> <dest parent folder> <as_sudo 0|1> <force_creating 0|1>
     #
     # Example:
-    # create_symlink $ORIGIN_HOME_FOLDER/.local/share/      fonts				$HOME_FOLDER/.local/share		            0 0
+    # create_symlink $ORIGIN_HOME_FOLDER/.local/share/      fonts               $HOME_FOLDER/.local/share                   0 0
     #
     ###
 
