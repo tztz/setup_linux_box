@@ -1,0 +1,3 @@
+# List npm packages to install globally here
+
+# nothing yet
