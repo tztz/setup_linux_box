@@ -2,7 +2,7 @@
 
 Hello me!
 
-Are you setting up a new Linux box? Then follow these steps!
+Are you setting up a new Linux box? Then follow my setup instructions below.
 
 Note: Never store sensitive data like credentials, etc. in this project!
 
