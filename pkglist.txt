@@ -29,3 +29,4 @@ extra/ttf-jetbrains-mono
 extra/ttf-hack
 extra/noto-fonts
 extra/sqlc
+extra/electrum
