@@ -194,7 +194,7 @@ function start {
         fi
 
         echo_heading "Sourcing custom shell files"
-        append_to_file ". $ORIGIN_HOME_FOLDER/dotfiles/${rc_file}_custom" $HOME_FOLDER/$rc_file
+        append_to_file ". $ORIGIN_HOME_FOLDER/dotfiles-private/${rc_file}_custom" $HOME_FOLDER/$rc_file
         echo_heading "Done sourcing"
     fi
 
@@ -222,10 +222,10 @@ function start {
     #
     ###
 
-    create_symlink $ORIGIN_HOME_FOLDER/dotfiles/            .gitconfig          $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER/dotfiles/            .npmrc              $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER/dotfiles-private/    .gitconfig          $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER/dotfiles-private/    .npmrc              $HOME_FOLDER                                0 0
     create_symlink $ORIGIN_HOME_FOLDER                      bin                 $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      dotfiles            $HOME_FOLDER                                0 0
+    create_symlink $ORIGIN_HOME_FOLDER                      dotfiles-private    $HOME_FOLDER                                0 0
     create_symlink $ORIGIN_HOME_FOLDER                      tmp                 $HOME_FOLDER                                0 0
     create_symlink $ORIGIN_HOME_FOLDER                      todo                $HOME_FOLDER                                0 0
     create_symlink $ORIGIN_HOME_FOLDER                      .aws                $HOME_FOLDER                                0 0
