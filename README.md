@@ -66,22 +66,15 @@ After restoring the backup (see previous section) and running `setup_linux_box.s
 
 The VPN configs are created during setup. Only add your credentials afterwards via the resp. settings UI.
 
+### Disable system bell
+
+Go to _Settings -> Accessibility -> System Bell_ and disable the checkbox
+
 ### Mailing with GnuPG encryption
 
 #### Qvest Digital / tarent
 
 ##### Thunderbird
 
-###### Import `tarent-everyone.gpg` public keyring in Thunderbird
-
-- see <https://confluence.tarent.de/pages/viewpage.action?pageId=592937048&focusedCommentId=1470595110#comment-1470595110>
-
-###### Import private key in Thunderbird
-
+- see <https://confluence.qvest-digital.com/display/HELP/Hilfe%3A+Thunderbird>
 - import private key (e.g. `~/.gnupg/my_privkey.asc`) in Thunderbird
-
-### Disable system bell
-
-TODO: still needed?
-
-Go to _Settings -> Accessibility -> Bell_ and disable the checkbox
