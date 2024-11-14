@@ -4,7 +4,6 @@ extra/fwupd
 extra/htop
 extra/zip
 extra/jq
-extra/hey
 extra/mkcert
 extra/restic
 extra/skanpage
