@@ -52,22 +52,24 @@ print_headline "Install packages"
 BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh
 
 ####################################################################################
-# SDKMAN!
-# https://sdkman.io/
+# mise (mise-en-place)
+# https://github.com/jdx/mise/
+# https://mise.jdx.dev/
 ####################################################################################
 
-print_headline "Download and install SDKMAN!, install packages"
+print_headline "Install mise"
 
-$BASE_FOLDER/setup_sdkman.sh
+$BASE_FOLDER/setup_mise.sh
 
 ####################################################################################
-# Node.js
-# https://nodejs.org/
+# Install dev tools via mise
+# https://github.com/jdx/mise/
+# https://mise.jdx.dev/
 ####################################################################################
 
-print_headline "Install Node.js and its ecosystem"
+print_headline "Install dev tools via mise"
 
-$BASE_FOLDER/setup_node_ecosystem.sh
+$BASE_FOLDER/setup_dev_env_via_mise.sh
 
 ####################################################################################
 # Global npm packages
@@ -76,16 +78,6 @@ $BASE_FOLDER/setup_node_ecosystem.sh
 ###print_headline "Install global npm packages"
 
 ###$BASE_FOLDER/install_global_npm_packages.sh
-
-####################################################################################
-# goenv / Go
-# https://github.com/go-nv/goenv/
-# https://go.dev/
-####################################################################################
-
-print_headline "Install goenv and Go"
-
-$BASE_FOLDER/setup_go.sh
 
 ####################################################################################
 # Docker

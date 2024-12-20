@@ -22,7 +22,6 @@ extra/minikube
 extra/k9s
 extra/helm
 extra/terraform
-aur/volta-bin
 extra/ttf-fira-code
 extra/ttf-jetbrains-mono
 extra/ttf-hack
