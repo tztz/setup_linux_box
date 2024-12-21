@@ -16,12 +16,6 @@ extra/neovim
 extra/docker
 extra/docker-buildx
 extra/docker-compose
-extra/kubectl
-extra/kubectx
-extra/minikube
-extra/k9s
-extra/helm
-extra/terraform
 extra/ttf-fira-code
 extra/ttf-jetbrains-mono
 extra/ttf-hack
