@@ -7,14 +7,16 @@ if [ "${minikube_existent}" == "" ]; then
     exit 1
 fi
 
-STATUS=$(minikube status -f {{.Host}})
-if [ $STATUS != "Stopped" ]; then
+# Check whether minikube is already running
+minikube status > /dev/null
+minikube_status=$?
+if [ $minikube_status == 0 ]; then
     echo "minikube is already running. Skipping."
-    exit 1
+    exit 0
 fi
 
 # Start minikube (download if needed)
-[ $(minikube status -f {{.Host}}) == "Stopped" ] && \
 minikube start && \
 minikube addons enable ingress && \
-minikube addons enable ingress-dns
+minikube addons enable ingress-dns && \
+minikube status
