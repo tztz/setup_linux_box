@@ -52,6 +52,15 @@ print_headline "Install packages"
 BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh
 
 ####################################################################################
+# SDKMAN!
+# https://sdkman.io/
+####################################################################################
+
+print_headline "Download and install SDKMAN!, install packages"
+
+$BASE_FOLDER/setup_sdkman.sh
+
+####################################################################################
 # mise (mise-en-place)
 # https://github.com/jdx/mise/
 # https://mise.jdx.dev/

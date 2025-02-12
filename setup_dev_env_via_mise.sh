@@ -2,9 +2,9 @@
 
 mise use --global node@latest
 mise use --global go@latest
-mise use --global java@latest
-mise use --global kotlin@latest
-mise use --global groovy@latest
+#mise use --global java@latest
+#mise use --global kotlin@latest
+#mise use --global groovy@latest
 mise use --global terraform@latest
 mise use --global kubectl@latest
 mise use --global kubectx@latest
