@@ -10,7 +10,8 @@ if [[ "$OPERATING_SYSTEM" == 'GNU/Linux' ]]; then
     # Install Linux apps ...
 
     # Install classic packages
-    yay -S --needed --noconfirm - < $BASE_FOLDER/pkglist.txt
+    yay -S --needed --noconfirm - < $BASE_FOLDER/pkglist_yay.txt
+    #xargs sudo apt-get -y install < pkglist_aptget.txt
 
     # Install flatpak packages
     flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
