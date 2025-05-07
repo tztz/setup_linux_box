@@ -8,11 +8,12 @@ Note: Never store sensitive data like credentials, etc. in this project!
 
 ## Create bootable USB drive
 
-Download a Linux ISO image (e.g. [EndeavourOS](https://endeavouros.com/)) and burn it to a USB drive:
+Download a Linux ISO image (e.g. [EndeavourOS](https://endeavouros.com/) or [Ubuntu](https://ubuntu.com/)) and burn it to a USB drive:
 
 ```sh
-ls -l /dev/disk/by-id | grep usb
-sudo dd if=endeavouros.iso of=/dev/XdA bs=1M oflag=sync status=progress
+ls -l /dev/disk/by-id | grep usb # returns the device (e.g. /dev/sda) of the inserted USB drive
+
+sudo dd if=endeavouros.iso of=/dev/??? bs=1M oflag=sync status=progress # replace /dev/??? with the corresponding device
 ```
 
 ## Install Linux
@@ -21,7 +22,7 @@ Boot from the USB drive and follow the installation steps.
 
 ## First steps after a fresh Linux installation
 
-1. Perform a full system upgrade (via yay).
+1. Perform a full system upgrade (e.g. via `yay` or `apt-get`).
 1. Reboot.
 1. Log in to your Bitwarden vault via browser using email address, password, and your 2FA device (i.e. via the Bitwarden Authenticator app on your mobile phone).
    - There is a password hint.
