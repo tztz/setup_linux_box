@@ -14,14 +14,16 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
     if [[ "${LINUX_DISTRIBUTION}" == 'EndeavourOS' || "${LINUX_DISTRIBUTION}" == 'Arch Linux' ]]; then
         echo "Installing via yay ..."
         yay -S --needed --noconfirm - < $BASE_FOLDER/pkglist_yay.txt
+
+        # Install flatpak packages
+        flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
     else
         echo "Installing via apt-get ..."
         sudo apt update
         xargs sudo apt -y install < pkglist_apt.txt
+        ./install_apps_via_debs.sh
+        ./install_docker.sh
     fi
-
-    # Install flatpak packages
-    ###flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
 fi
 
 if [[ "$OPERATING_SYSTEM" == 'Darwin' ]]; then
