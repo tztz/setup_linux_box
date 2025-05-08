@@ -9,4 +9,5 @@ fi
 
 curl https://mise.run | sh
 echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+eval "$(~/.local/bin/mise activate bash)"
 mise doctor
