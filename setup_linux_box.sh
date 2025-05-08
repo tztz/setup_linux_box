@@ -141,7 +141,7 @@ $BASE_FOLDER/setup_aws_cli.sh
 
 print_headline "Setup Terraform CLI"
 
-$BASE_FOLDER/setup_terraform_cli.sh
+###$BASE_FOLDER/setup_terraform_cli.sh
 
 ####################################################################################
 # Minikube
@@ -150,7 +150,7 @@ $BASE_FOLDER/setup_terraform_cli.sh
 
 print_headline "Setup minikube"
 
-$BASE_FOLDER/setup_minikube.sh
+###$BASE_FOLDER/setup_minikube.sh
 
 ####################################################################################
 # Symlinks
