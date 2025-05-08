@@ -16,7 +16,7 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         yay -S --needed --noconfirm - < $BASE_FOLDER/pkglist_yay.txt
     else
         echo "Installing via apt-get ..."
-        
+        sudo apt update
         xargs sudo apt -y install < pkglist_apt.txt
     fi
 
