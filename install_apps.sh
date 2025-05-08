@@ -21,13 +21,14 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo "Installing via apt ..."
         sudo apt update
         xargs sudo apt -y install < $BASE_FOLDER/pkglist_apt.txt
-        $BASE_FOLDER/install_apps_via_debs.sh
+        
+        ###$BASE_FOLDER/install_apps_via_debs.sh
 
-        echo "Installing docker manually ..."
-        $BASE_FOLDER/install_docker.sh
+        ###echo "Installing docker manually ..."
+        ###$BASE_FOLDER/install_docker.sh
 
-        echo "Installing snap packages ..."
-        $BASE_FOLDER/install_snaps.sh
+        ###echo "Installing snap packages ..."
+        ###$BASE_FOLDER/install_snaps.sh
     fi
 fi
 

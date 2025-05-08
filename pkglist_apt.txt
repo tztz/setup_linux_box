@@ -1,7 +1,3 @@
 git
 curl
 restic
-podman
-neovim
-htop
-fuse
