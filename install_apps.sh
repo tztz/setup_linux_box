@@ -20,7 +20,7 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
     fi
 
     # Install flatpak packages
-    flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
+    ###flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
 fi
 
 if [[ "$OPERATING_SYSTEM" == 'Darwin' ]]; then
