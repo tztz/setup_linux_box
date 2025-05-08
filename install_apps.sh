@@ -16,7 +16,7 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         yay -S --needed --noconfirm - < $BASE_FOLDER/pkglist_yay.txt
     else
         echo "Installing via apt-get ..."
-        xargs sudo apt-get -y install < pkglist_aptget.txt
+        xargs sudo apt-get -y install < pkglist_apt.txt
     fi
 
     # Install flatpak packages
