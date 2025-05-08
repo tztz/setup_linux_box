@@ -27,7 +27,7 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         $BASE_FOLDER/install_docker.sh
 
         echo "Installing snap packages ..."
-        sudo snap install $(cat $BASE_FOLDER/pkglist_snap.txt)
+        $BASE_FOLDER/install_snaps.sh
     fi
 fi
 
