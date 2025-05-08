@@ -11,9 +11,11 @@ Note: Never store sensitive data like credentials, etc. in this project!
 Download a Linux ISO image (e.g. [EndeavourOS](https://endeavouros.com/) or [Ubuntu](https://ubuntu.com/)) and burn it to a USB drive:
 
 ```sh
-ls -l /dev/disk/by-id | grep usb # returns the device (e.g. /dev/sda) of the inserted USB drive
+# Return the device (e.g. /dev/sda) of the inserted USB drive:
+ls -l /dev/disk/by-id | grep usb
 
-sudo dd if=endeavouros.iso of=/dev/??? bs=1M oflag=sync status=progress # replace /dev/??? with the corresponding device
+# Replace /dev/??? with the corresponding device and burn image to USB drive:
+sudo dd if=endeavouros.iso of=/dev/??? bs=1M oflag=sync status=progress
 ```
 
 ## Install Linux
