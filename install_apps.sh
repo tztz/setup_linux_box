@@ -22,6 +22,8 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         sudo apt update
         xargs sudo apt -y install < pkglist_apt.txt
         $BASE_FOLDER/install_apps_via_debs.sh
+
+        echo "Installing docker manually ..."
         $BASE_FOLDER/install_docker.sh
     fi
 fi
