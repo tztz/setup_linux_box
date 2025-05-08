@@ -51,6 +51,7 @@ print_headline "Install packages"
 
 BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps_via_debs.sh
 BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh
+BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_docker.sh
 
 ####################################################################################
 # SDKMAN!
