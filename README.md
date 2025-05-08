@@ -1,6 +1,6 @@
 # Linux box setup
 
-Hello me!
+Hello!
 
 Are you setting up a new Linux box? Then follow my setup instructions below.
 
