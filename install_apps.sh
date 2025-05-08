@@ -15,7 +15,7 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo "Installing via yay ..."
         yay -S --needed --noconfirm - < $BASE_FOLDER/pkglist_yay.txt
 
-        # Install flatpak packages
+        echo "Installing flatpak packages ..."
         flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
     else
         echo "Installing via apt ..."
