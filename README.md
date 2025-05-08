@@ -22,7 +22,7 @@ Boot from the USB drive and follow the installation steps.
 
 ## First steps after a fresh Linux installation
 
-1. Perform a full system upgrade (e.g. via `yay` or `apt-get`).
+1. Perform a full system upgrade (e.g. via `yay` or `apt`).
 1. Reboot.
 1. Log in to your Bitwarden vault via browser using email address, password, and your 2FA device (i.e. via the Bitwarden Authenticator app on your mobile phone).
    - There is a password hint.
