@@ -2,4 +2,4 @@
 
 # Downloads some interesting files, installers, etc.
 
-# Nothing yet
+# nothing yet
