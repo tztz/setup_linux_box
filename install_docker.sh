@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Check whether docker is already installed
-docker --version > /dev/null
-docker_version=$?
-if [ $docker_version != '' ]; then
+if command -v docker 2>&1 >/dev/null; then
     echo "docker is already installed. Skipping."
     exit 0
 fi
