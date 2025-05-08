@@ -123,7 +123,7 @@ print_todo "Check that the checkboxes 'Use this connection only for resources on
 
 print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
 
-$BASE_FOLDER/setup_gcloud_cli.sh
+###$BASE_FOLDER/setup_gcloud_cli.sh
 
 ####################################################################################
 # AWS CLI (aws)
@@ -132,7 +132,7 @@ $BASE_FOLDER/setup_gcloud_cli.sh
 
 print_headline "Download, install, and setup AWS CLI (aws)"
 
-$BASE_FOLDER/setup_aws_cli.sh
+###$BASE_FOLDER/setup_aws_cli.sh
 
 ####################################################################################
 # Terraform CLI

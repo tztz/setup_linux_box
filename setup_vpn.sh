@@ -20,4 +20,4 @@ function setup_vpn {
 
 ###setup_vpn "VPN_Server_mzesch" "$HOME/mydata/auth_certificates_keys/vpn/tarent_vpn/tarent_vpn_2022/VPN_Server_mzesch.ovpn" "tarent VPN"
 ###setup_vpn "vpn-rewe-rz" "$HOME/mydata/auth_certificates_keys/vpn/rewe_digital_vpn/mzesch/vpn-rewe-rz.ovpn" "vpn-rewe-rz"
-setup_vpn "marks_expressvpn_germany_frankfurt_1_udp" "$HOME/mydata/auth_certificates_keys/vpn/expressvpn_private_vpn/marks_expressvpn_germany_frankfurt_1_udp.ovpn" "ExpressVPN Germany-Frankfurt-1"
+###setup_vpn "marks_expressvpn_germany_frankfurt_1_udp" "$HOME/mydata/auth_certificates_keys/vpn/expressvpn_private_vpn/marks_expressvpn_germany_frankfurt_1_udp.ovpn" "ExpressVPN Germany-Frankfurt-1"
