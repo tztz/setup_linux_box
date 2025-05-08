@@ -21,8 +21,6 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo "Installing via apt ..."
         sudo apt update
         xargs sudo apt -y install < pkglist_apt.txt
-
-        echo "Installing via dpkg ..."
         $BASE_FOLDER/install_apps_via_debs.sh
         $BASE_FOLDER/install_docker.sh
     fi
