@@ -68,16 +68,3 @@ After restoring the backup and running `setup_linux_box.sh` new backups can be c
 ### VPN
 
 The VPN configs are created during setup. Only add your credentials afterwards via the resp. settings UI.
-
-### Disable system bell
-
-Go to _Settings -> Accessibility -> System Bell_ and disable the checkbox
-
-### Mailing with GnuPG encryption
-
-#### Qvest Digital / tarent
-
-##### Thunderbird
-
-- see <https://confluence.qvest-digital.com/display/HELP/Hilfe%3A+Thunderbird>
-- import private key (e.g. `~/.gnupg/my_privkey.asc`) in Thunderbird
