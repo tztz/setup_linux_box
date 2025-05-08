@@ -43,7 +43,7 @@ Follow the instructions at <https://github.com/tztz/backup>.
 Note: You can download the needed `.backup.env` file from your Google Drive's `__INSTALL__` folder.
 If you wish you can also download the `backup_restore.sh` file from there but it's recommended to use the version from the GitHub repository.
 
-**Note**: Make sure that the downloaded file starts with a dot (`.`). It must be named `.backup.env` not `backup.env`.
+**Note**: Make sure that the downloaded file starts with a dot. It must be named `.backup.env` not `backup.env`.
 
 ### Create backup
 
