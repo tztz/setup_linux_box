@@ -45,7 +45,7 @@ If you wish you can also download the `backup_restore.sh` file from there but it
 
 ### Create backup
 
-After restoring the backup (see previous section) and running `setup_linux_box.sh` new backups can be created by executing `backup_create.sh` (it's in the PATH).
+After restoring the backup and running `setup_linux_box.sh` new backups can be created by executing `backup_create.sh` (it's in the PATH).
 
 ## Setup apps, more settings/configurations
 
