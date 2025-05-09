@@ -8,6 +8,13 @@ if [ $mise_exists -eq 0 ]; then
 fi
 
 curl https://mise.run | sh
-echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
-eval "$(~/.local/bin/mise activate bash)"
-mise doctor
+
+line_to_add='eval "$(~/.local/bin/mise activate bash)"'
+target_file=~/.bashrc
+if grep -q "^$line_to_add$" "$target_file" ; then
+    echo "'eval' line in $target_file already added. Skipping."
+else
+    echo "${line_to_add}" >> "${target_file}"
+fi
+
+bash -ic 'mise doctor'

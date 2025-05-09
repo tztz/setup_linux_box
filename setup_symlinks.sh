@@ -142,7 +142,7 @@ function append_to_file {
     fi
 
     if grep -q "^$line$" "$target_file" ; then
-        echo "Nothing to do for $target_file   ... skipping."
+        echo "Nothing to do for $target_file ... skipping."
         return 0
     else
         echo "Appending '$line' to $target_file"
@@ -255,7 +255,7 @@ function start {
     # -------------------------------------------------------
 
     echo ""
-    echo "Done setting up symlinks."
+    echo "Done setting up symlinks. Close terminal now."
     echo ""
     echo "After checking the just created backups consider deleting them (be cautious!) by executing setup_symlinks.sh --delete-all-backups"
 }
