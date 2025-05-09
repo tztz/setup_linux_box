@@ -18,14 +18,17 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo "Installing flatpak packages ..."
         flatpak -y install $(cat $BASE_FOLDER/pkglist_flatpak.txt)
     else
-        echo "Installing via apt ..."
+        echo "apt update ..."
         sudo apt update
+
+        echo "Installing via apt ..."
         xargs sudo apt -y install < $BASE_FOLDER/pkglist_apt.txt
 
+        echo "Installing deb files ..."
         $BASE_FOLDER/install_apps_via_debs.sh
 
-        ###echo "Installing docker manually ..."
-        ###$BASE_FOLDER/install_docker.sh
+        echo "Installing docker ..."
+        $BASE_FOLDER/install_docker.sh
 
         ###echo "Installing snap packages ..."
         ###$BASE_FOLDER/install_snaps.sh
