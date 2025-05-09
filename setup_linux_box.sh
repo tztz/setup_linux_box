@@ -55,7 +55,7 @@ $BASE_FOLDER/download_files.sh
 # Software installation
 ####################################################################################
 
-print_headline "Install packages"
+print_headline "Install packages/apps"
 
 BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh
 
