@@ -84,7 +84,7 @@ $BASE_FOLDER/setup_java_truststore.sh
 
 print_headline "Install mise"
 
-###$BASE_FOLDER/setup_mise.sh
+$BASE_FOLDER/setup_mise.sh
 
 ####################################################################################
 # Install dev tools via mise
@@ -94,7 +94,7 @@ print_headline "Install mise"
 
 print_headline "Install dev tools via mise"
 
-###$BASE_FOLDER/setup_dev_env_via_mise.sh
+$BASE_FOLDER/setup_dev_env_via_mise.sh
 
 ####################################################################################
 # Global npm packages
