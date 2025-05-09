@@ -69,6 +69,14 @@ print_headline "Download and install SDKMAN!, install packages"
 $BASE_FOLDER/setup_sdkman.sh
 
 ####################################################################################
+# Java TrustStore (cacerts)
+####################################################################################
+
+print_headline "Copy Java TrustStore(s) in place"
+
+$BASE_FOLDER/setup_java_truststore.sh
+
+####################################################################################
 # mise (mise-en-place)
 # https://github.com/jdx/mise/
 # https://mise.jdx.dev/
