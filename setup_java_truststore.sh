@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #
-# Copy Java truststore from REWE digital's JFrog artifactory.
+# Replaces the Java TrustStore with the version from REWE digital's JFrog artifactory.
+#
+# TODO: It would be better to merge REWE's TrustStore into the original one instead of replacing it.
 #
 
 backup_timestamp=$(date +%Y-%m-%d_%H-%M-%S)
