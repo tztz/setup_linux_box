@@ -1,4 +1,5 @@
-git
+ca-certificates
 curl
+git
 restic
 maven
