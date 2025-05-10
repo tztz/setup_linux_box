@@ -3,4 +3,3 @@ curl
 git
 restic
 maven
-microsoft-edge-stable
