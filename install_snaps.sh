@@ -1,3 +1,3 @@
 #!/bin/bash
 
-# nothing yet
+sudo snap install signal-desktop
