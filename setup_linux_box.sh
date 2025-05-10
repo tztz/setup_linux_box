@@ -50,6 +50,7 @@ print_ok
 print_headline "Download files"
 
 $BASE_FOLDER/download_files.sh
+print_ok
 
 ###################################################################################
 # Software installation
@@ -75,6 +76,7 @@ $BASE_FOLDER/setup_sdkman.sh
 print_headline "Copy Java TrustStore(s) in place"
 
 $BASE_FOLDER/setup_java_truststore.sh
+print_ok
 
 ####################################################################################
 # mise (mise-en-place)
@@ -108,10 +110,12 @@ $BASE_FOLDER/setup_dev_env_via_mise.sh
 # Docker
 ####################################################################################
 
-print_headline "Start and setup docker service, add user '$USER' to group 'docker'"
+# Note: I'm using Docker Desktop, so there's no docker service available.
 
-$BASE_FOLDER/setup_docker.sh && \
-print_ok
+###print_headline "Start and setup docker service, add user '$USER' to group 'docker'"
+
+###$BASE_FOLDER/setup_docker.sh && \
+###print_ok
 
 ####################################################################################
 # OpenVPN
@@ -129,7 +133,7 @@ print_todo "Check that the checkboxes 'Use this connection only for resources on
 # https://cloud.google.com/sdk/docs/install
 ####################################################################################
 
-print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
+###print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
 
 ###$BASE_FOLDER/setup_gcloud_cli.sh
 
@@ -138,7 +142,7 @@ print_headline "Download, install, and setup Google Cloud CLI (gcloud), install 
 # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 ####################################################################################
 
-print_headline "Download, install, and setup AWS CLI (aws)"
+###print_headline "Download, install, and setup AWS CLI (aws)"
 
 ###$BASE_FOLDER/setup_aws_cli.sh
 
@@ -149,14 +153,15 @@ print_headline "Download, install, and setup AWS CLI (aws)"
 
 print_headline "Setup Terraform CLI"
 
-###$BASE_FOLDER/setup_terraform_cli.sh
+$BASE_FOLDER/setup_terraform_cli.sh
+print_ok
 
 ####################################################################################
 # Minikube
 # https://minikube.sigs.k8s.io
 ####################################################################################
 
-print_headline "Setup minikube"
+###print_headline "Setup minikube"
 
 ###$BASE_FOLDER/setup_minikube.sh
 
@@ -181,7 +186,7 @@ print_ok
 # Result
 ####################################################################################
 
-print_headline "End of setup"
+print_headline "End of setup. Close terminal now."
 
 echo "Done."
 echo ""
