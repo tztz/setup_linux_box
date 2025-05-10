@@ -27,11 +27,11 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo "Installing deb files ..."
         $BASE_FOLDER/install_apps_via_debs.sh
 
-        echo "Installing docker ..."
-        $BASE_FOLDER/install_docker.sh
+        echo "Installing Docker Desktop ..."
+        $BASE_FOLDER/install_docker_desktop.sh
 
-        ###echo "Installing snap packages ..."
-        ###$BASE_FOLDER/install_snaps.sh
+        echo "Installing snap packages ..."
+        $BASE_FOLDER/install_snaps.sh
     fi
 fi
 
