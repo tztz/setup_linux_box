@@ -107,17 +107,6 @@ $BASE_FOLDER/setup_dev_env_via_mise.sh
 ###$BASE_FOLDER/install_global_npm_packages.sh
 
 ####################################################################################
-# Docker
-####################################################################################
-
-# Note: I'm using Docker Desktop, so there's no docker service available.
-
-###print_headline "Start and setup docker service, add user '$USER' to group 'docker'"
-
-###$BASE_FOLDER/setup_docker.sh && \
-###print_ok
-
-####################################################################################
 # OpenVPN
 # https://openvpn.net/
 ####################################################################################

@@ -1,20 +1,13 @@
 #!/bin/bash
 
-# Add Docker's official GPG key:
-sudo apt update
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-
-wget 'https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb' -O /tmp/debs001/docker-desktop-amd64.deb
-
-sudo apt install /tmp/debs001/docker-desktop-amd64.deb
+#
+# Docker Desktop is an alternative to the Docker engine.
+# If you choose to install Docker Desktop you do not need the Docker engine.
+#
+# Prefer to install the Docker engine (see the install_docker_engine.sh file).
+# Do not install both.
+#
 
 # Note: You do not need to log in into the Docker Desktop!
+wget 'https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb' -O /tmp/debs001/docker-desktop-amd64.deb && \
+sudo apt install /tmp/debs001/docker-desktop-amd64.deb
