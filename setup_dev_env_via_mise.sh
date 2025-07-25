@@ -9,3 +9,4 @@ mise use --global minikube@latest
 mise use --global k9s@latest
 mise use --global helm@latest
 mise use --global rancher@latest
+mise use --global kafkactl
