@@ -1,0 +1,78 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    // REWE Digital JFrog Artifactory
+    maven {
+        name = "rewe-artifactory"
+        url = "https://artifactory.rewe-digital.com/artifactory/maven-public"
+        credentials {
+            username = project.findProperty('reweArtifactoryUsername') ?: System.getenv('REWE_ARTIFACTORY_USERNAME')
+            password = project.findProperty('reweArtifactoryPassword') ?: System.getenv('REWE_ARTIFACTORY_PASSWORD')
+        }
+    }
+    
+    // REWE Digital private repositories
+    maven {
+        name = "rewe-artifactory-private"
+        url = "https://artifactory.rewe-digital.com/artifactory/maven-private"
+        credentials {
+            username = project.findProperty('reweArtifactoryUsername') ?: System.getenv('REWE_ARTIFACTORY_USERNAME')
+            password = project.findProperty('reweArtifactoryPassword') ?: System.getenv('REWE_ARTIFACTORY_PASSWORD')
+        }
+    }
+    
+    // Fallback to Maven Central if REWE artifactory is not available
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:3.2.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.0'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    
+    repositories {
+        maven {
+            name = "rewe-artifactory-releases"
+            url = "https://artifactory.rewe-digital.com/artifactory/maven-releases"
+            credentials {
+                username = project.findProperty('reweArtifactoryUsername') ?: System.getenv('REWE_ARTIFACTORY_USERNAME')
+                password = project.findProperty('reweArtifactoryPassword') ?: System.getenv('REWE_ARTIFACTORY_PASSWORD')
+            }
+        }
+    }
+}
+
+// Task to display repository configuration
+task showRepos {
+    doLast {
+        println "Configured repositories:"
+        repositories.each { repo ->
+            println "  - ${repo.name}: ${repo.url}"
+        }
+    }
+}

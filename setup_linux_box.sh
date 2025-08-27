@@ -79,6 +79,15 @@ $BASE_FOLDER/setup_java_truststore.sh
 print_ok
 
 ####################################################################################
+# Gradle REWE Artifactory Setup
+####################################################################################
+
+print_headline "Setup Gradle with REWE artifactory configuration"
+
+$BASE_FOLDER/setup_gradle_rewe.sh
+print_ok
+
+####################################################################################
 # mise (mise-en-place)
 # https://github.com/jdx/mise/
 # https://mise.jdx.dev/

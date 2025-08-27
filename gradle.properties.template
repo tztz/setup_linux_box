@@ -1,0 +1,12 @@
+# REWE Artifactory Configuration
+# Copy this file to your project root and update with your credentials
+# Alternatively, set environment variables REWE_ARTIFACTORY_USERNAME and REWE_ARTIFACTORY_PASSWORD
+
+# REWE Artifactory credentials (DO NOT COMMIT THESE TO VERSION CONTROL)
+# reweArtifactoryUsername=your-username
+# reweArtifactoryPassword=your-password-or-token
+
+# Gradle configuration
+org.gradle.daemon=true
+org.gradle.parallel=true
+org.gradle.caching=true
