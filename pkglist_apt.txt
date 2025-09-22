@@ -4,3 +4,4 @@ git
 restic
 maven
 keepassxc
+podman
