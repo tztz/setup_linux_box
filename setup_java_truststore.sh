@@ -27,7 +27,7 @@ override_cacerts() {
     cp $JAVA_HOME/lib/security/rewedigital_certs/cacerts_rewedigital $JAVA_HOME/lib/security/cacerts
 }
 
-###override_cacerts
+override_cacerts
 
 #
 # Creates a new Java TrustStore based on the original one (cacerts).
@@ -59,4 +59,4 @@ import_rewedigital_certs() {
     cp $JAVA_HOME/lib/security/rewedigital_certs/rewedigital_truststore.p12 $JAVA_HOME/lib/security/
 }
 
-import_rewedigital_certs
+###import_rewedigital_certs
