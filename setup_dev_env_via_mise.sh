@@ -4,6 +4,7 @@ mise self-update
 mise ugrade
 mise doctor
 
+# Packages to install:
 mise use --global node@latest
 mise use --global go@latest
 mise use --global terraform@latest
