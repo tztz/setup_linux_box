@@ -122,9 +122,9 @@ print_todo "Check that the checkboxes 'Use this connection only for resources on
 # https://cloud.google.com/sdk/docs/install
 ####################################################################################
 
-###print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
+print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
 
-###$BASE_FOLDER/setup_gcloud_cli.sh
+$BASE_FOLDER/setup_gcloud_cli.sh
 
 ####################################################################################
 # AWS CLI (aws)
