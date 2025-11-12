@@ -1,5 +1,9 @@
 #!/bin/bash
 
+mise self-update
+mise ugrade
+mise doctor
+
 mise use --global node@latest
 mise use --global go@latest
 mise use --global terraform@latest
