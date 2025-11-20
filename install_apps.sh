@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#
+# Installs applications.
+#
+
 if [[ "$BASE_FOLDER" == '' ]]; then
     BASE_FOLDER=~/mydata/projects/private/shell-tools/setup_linux_box
 fi
