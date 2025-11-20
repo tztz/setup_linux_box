@@ -7,3 +7,5 @@ keepassxc
 podman
 kafkio
 keeperpasswordmanager
+microsoft-edge-stable
+google-chrome-stable
