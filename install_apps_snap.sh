@@ -10,4 +10,4 @@ fi
 
 xargs -a $BASE_FOLDER/pkglist_snap.txt -L 1 sudo snap install
 
-snap refresh
+sudo snap refresh
