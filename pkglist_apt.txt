@@ -5,3 +5,5 @@ restic
 maven
 keepassxc
 podman
+kafkio
+keeperpasswordmanager
