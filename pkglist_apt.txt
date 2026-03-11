@@ -10,3 +10,4 @@ keeperpasswordmanager
 microsoft-edge-stable
 google-chrome-stable
 apache2-utils
+kcat
