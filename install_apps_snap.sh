@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script installs snap applications.
+# This script installs applications via the snap package manager.
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then

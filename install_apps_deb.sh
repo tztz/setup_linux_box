@@ -1,7 +1,12 @@
 #!/bin/bash
 
 #
-# This script installs various applications via their .deb packages.
+# This script installs applications via apt package manager by
+# downloading the .deb files and installing them via apt.
+#
+# This can be useful for applications that are not available in
+# the default repositories or for installing specific versions
+# of applications.
 #
 
 FOLDER=/tmp/debs001

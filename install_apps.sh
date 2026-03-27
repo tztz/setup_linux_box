@@ -1,7 +1,10 @@
 #!/bin/bash
 
 #
-# Installs applications.
+# This script installs applications.
+#
+# This is the main script for installing applications. It calls other scripts to
+# install applications via different package managers (e.g. apt, snap, flatpak, yay).
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then

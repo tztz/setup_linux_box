@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script installs flatpak applications.
+# This script installs applications via the flatpak package manager.
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then

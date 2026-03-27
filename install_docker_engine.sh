@@ -7,7 +7,7 @@
 # install_docker_desktop.sh file).
 #
 # Prefer to install the Docker engine.
-# Do not install both.
+# Do not install both!
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then

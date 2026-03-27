@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #
-# Installs various global npm packages.
+# This script installs applications via npm.
+#
+# The npm packages are installed globally, so they are available system-wide.
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then

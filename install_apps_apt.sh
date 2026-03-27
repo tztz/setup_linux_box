@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script installs apt applications.
+# This script installs applications via the apt package manager.
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then

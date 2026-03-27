@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script installs yay applications.
+# This script installs applications via the yay package manager.
 #
 
 if [[ "$BASE_FOLDER" == '' ]]; then
