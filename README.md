@@ -6,6 +6,14 @@ Are you setting up a new Linux box? Then follow my setup instructions below.
 
 Note: Never store sensitive data like credentials, etc. in this project!
 
+## Table of Contents
+
+- [Create bootable USB drive](#create-bootable-usb-drive)
+- [Install Linux](#install-linux)
+- [First steps after a fresh Linux installation](#first-steps-after-a-fresh-linux-installation)
+- [Backup / Restore](#backup--restore)
+- [Setup apps, more settings/configurations](#setup-apps-more-settingsconfigurations)
+
 ## Create bootable USB drive
 
 Download a Linux ISO image (e.g. [EndeavourOS](https://endeavouros.com/) or [Ubuntu](https://ubuntu.com/)) and burn it to a USB drive:
@@ -30,9 +38,12 @@ Boot from the USB drive and follow the installation steps.
    - There is a password hint.
    - In the event that you can no longer use your normal two-step login provider (e.g. because you have lost your mobile device), your recovery code allows you to access your Bitwarden account. You can find your Bitwarden two-step login recovery code in your secret location.
    - If you ever need to restore your Bitwarden vault, import the backed-up encrypted JSON export from your Google Drive's `Backups` folder. The password is your Bitwarden password.
-1. Restore backup (see resp. section below).
-1. Run the `~/mydata/projects/private/shell-tools/setup_linux_box/setup_linux_box.sh` shell script.
-1. Continue with further setups and settings (see resp. section below).
+1. Restore backup (see [Restore backup](#restore-backup) section below).
+1. Run the setup script:
+   ```sh
+   ~/mydata/projects/private/shell-tools/setup_linux_box/setup_linux_box.sh
+   ```
+1. Continue with further setups and settings (see [Setup apps](#setup-apps-more-settingsconfigurations) section below).
 
 ## Backup / Restore
 
@@ -43,30 +54,30 @@ Follow the instructions at <https://github.com/tztz/backup>.
 Note: You can download the needed `.backup.env` file from your Google Drive's `__INSTALL__` folder.
 If you wish you can also download the `backup_restore.sh` file from there but it's recommended to use the version from the GitHub repository.
 
-**Note**: Make sure that the downloaded file starts with a dot. It must be named `.backup.env` not `backup.env`.
+> **Important**: Make sure that the downloaded file starts with a dot. It must be named `.backup.env` not `backup.env`.
 
 ### Create backup
 
-After restoring the backup and running `setup_linux_box.sh` new backups can be created by executing `backup_create.sh` (it's in the PATH).
+After restoring the backup and running `setup_linux_box.sh`, new backups can be created by executing `backup_create.sh` (it's in the PATH).
 
 ## Setup apps, more settings/configurations
 
 ### Bitwarden browser plugin
 
-- log in
-- set vault timeout to 15 minutes
-- enable "Unlock with PIN" (PIN is stored in Bitwarden)
-- enable "clear clipboard after 1 minute"
+- Log in
+- Set vault timeout to 15 minutes
+- Enable "Unlock with PIN" (PIN is stored in Bitwarden)
+- Enable "Clear clipboard after 1 minute"
 
 ### vscode
 
-- log in to sync settings
+- Log in to sync settings
 
 ### IntelliJ IDEA Ultimate
 
-- log in to JetBrains account
-- activate license
+- Log in to JetBrains account
+- Activate license
 
 ### VPN
 
-The VPN configs are created during setup. Only add your credentials afterwards via the resp. settings UI.
+The VPN configs are created during setup. After setup, add your credentials via the network manager settings UI (e.g. GNOME Settings → Network → VPN).
