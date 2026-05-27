@@ -83,6 +83,6 @@ delete_rewedigital_certs() {
     rm -f $JAVA_HOME/lib/security/rewedigital_truststore.p12
 }
 
-###override_cacerts
-import_rewedigital_certs "secret123"
+override_cacerts
+#import_rewedigital_certs "secret123"
 #delete_rewedigital_certs "secret123"
