@@ -81,3 +81,7 @@ After restoring the backup and running `setup_linux_box.sh`, new backups can be 
 ### VPN
 
 The VPN configs are created during setup. After setup, add your credentials via the network manager settings UI (e.g. GNOME Settings → Network → VPN).
+
+#### Work
+
+Have a look at the `bin-private` folder. There you find the `*_vpn_connect.sh` file.
