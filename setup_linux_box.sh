@@ -81,25 +81,23 @@ $BASE_FOLDER/setup_java_truststore.sh && \
 print_ok || print_fail
 
 ####################################################################################
-# mise (mise-en-place)
-# https://github.com/jdx/mise/
-# https://mise.jdx.dev/
+# Devbox
+# https://github.com/jetify-com/devbox
+# https://www.jetify.com/devbox
 ####################################################################################
 
-print_headline "Install mise"
+print_headline "Install Devbox"
 
-$BASE_FOLDER/setup_mise.sh && \
+$BASE_FOLDER/setup_devbox.sh && \
 print_ok || print_fail
 
 ####################################################################################
-# Install dev tools via mise
-# https://github.com/jdx/mise/
-# https://mise.jdx.dev/
+# Install nix packages via Devbox
 ####################################################################################
 
-print_headline "Install dev tools via mise"
+print_headline "Install nix packages via Devbox"
 
-$BASE_FOLDER/setup_dev_env_via_mise.sh && \
+$BASE_FOLDER/install_apps_devbox.sh && \
 print_ok || print_fail
 
 ####################################################################################
@@ -107,7 +105,7 @@ print_ok || print_fail
 ####################################################################################
 
 ###print_headline "Install global npm packages"
-
+###
 ###$BASE_FOLDER/install_global_npm_packages.sh
 
 ####################################################################################
@@ -167,7 +165,7 @@ print_ok || print_fail
 ####################################################################################
 
 ###print_headline "Setup minikube"
-
+###
 ###$BASE_FOLDER/setup_minikube.sh
 
 ####################################################################################

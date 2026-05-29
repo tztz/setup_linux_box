@@ -1,0 +1,12 @@
+# List nix packages to install globally here
+
+k9s
+go
+kubectl
+kubectx
+nodejs
+terraform
+helm
+kafkactl
+minikube
+rancher
