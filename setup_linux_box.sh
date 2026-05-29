@@ -119,7 +119,8 @@ print_headline "Setup VPNs"
 
 $BASE_FOLDER/setup_vpn.sh && \
 print_todo "Open the VPN config UI and enter your credentials (username, password)" && \
-print_todo "Check that the checkboxes 'Use this connection only for resources on its network' are ticked for IPv4 and IPv6"
+print_todo "Check that the checkboxes 'Use this connection only for resources on its network' are ticked for IPv4 and IPv6" || \
+print_fail
 
 ####################################################################################
 # Google Cloud CLI (gcloud)
