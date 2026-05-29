@@ -20,7 +20,7 @@ cat > "$DESKTOP_FILE" <<EOF
 [Desktop Entry]
 Name=IntelliJ IDEA Ultimate
 Comment=IntelliJ IDEA Ultimate Edition
-Exec=$IDEA_HOME/bin/idea.sh %f
+Exec=$IDEA_HOME/bin/idea %f
 Icon=$IDEA_HOME/bin/idea.svg
 Terminal=false
 Type=Application
