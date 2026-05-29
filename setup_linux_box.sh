@@ -146,6 +146,16 @@ $BASE_FOLDER/setup_terraform_cli.sh
 print_ok
 
 ####################################################################################
+# IntelliJ IDEA desktop entry
+# https://www.jetbrains.com/idea/download/
+####################################################################################
+
+print_headline "Setup IntelliJ IDEA desktop entry"
+
+$BASE_FOLDER/setup_idea_desktop_entry.sh
+print_ok
+
+####################################################################################
 # Minikube
 # https://minikube.sigs.k8s.io
 ####################################################################################

@@ -73,8 +73,11 @@ After restoring the backup and running `setup_linux_box.sh`, new backups can be 
 
 - Log in to sync settings
 
-### IntelliJ IDEA Ultimate
+### IntelliJ IDEA
 
+- Download the IntelliJ IDEA (Ultimate) tgz file from the official homepage
+- Unpack it in `~/myapps/intellij/idea`
+- Update the symlink so that it points to the latest idea installation
 - Log in to JetBrains account
 - Activate license
 
