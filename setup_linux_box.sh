@@ -24,7 +24,13 @@ function print_todo() {
 }
 
 function print_ok() {
-    echo "OK."
+    echo -e "${TEXT_COLOR_GREEN}OK.${TEXT_COLOR_OFF}"
+}
+
+function print_fail() {
+    local message="$1"
+    echo -e "${TEXT_COLOR_LIGHTRED}FAILED.${TEXT_COLOR_OFF}"
+    [ -n "$message" ] && echo -e "${TEXT_COLOR_LIGHTRED}$message${TEXT_COLOR_OFF}"
 }
 
 ####################################################################################
@@ -33,15 +39,9 @@ function print_ok() {
 
 print_headline "Check prerequisites"
 
-[ -d "~/mydata" ] && \
-echo -e "${TEXT_COLOR_LIGHTRED}~/mydata has not yet been restored from backup, this must be done first." && \
-echo "" && \
-echo "Giving up." && \
-echo -e "${TEXT_COLOR_OFF}" && \
-exit 1
-
-[ ! -d "~/mydata" ] && \
-print_ok
+[ ! -d ~/mydata ] && \
+print_fail "~/mydata has not yet been restored from backup, this must be done first. Giving up." && \
+exit 1 || print_ok
 
 ###################################################################################
 # File download
@@ -49,8 +49,8 @@ print_ok
 
 print_headline "Download files"
 
-$BASE_FOLDER/download_files.sh
-print_ok
+$BASE_FOLDER/download_files.sh && \
+print_ok || print_fail
 
 ###################################################################################
 # Software installation
@@ -58,7 +58,8 @@ print_ok
 
 print_headline "Install packages/apps"
 
-BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh
+BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # SDKMAN!
@@ -67,7 +68,8 @@ BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh
 
 print_headline "Download and install SDKMAN!, install packages"
 
-$BASE_FOLDER/setup_sdkman.sh
+$BASE_FOLDER/setup_sdkman.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # Java TrustStore (cacerts)
@@ -75,8 +77,8 @@ $BASE_FOLDER/setup_sdkman.sh
 
 print_headline "Copy Java TrustStore(s) in place"
 
-$BASE_FOLDER/setup_java_truststore.sh
-print_ok
+$BASE_FOLDER/setup_java_truststore.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # mise (mise-en-place)
@@ -86,7 +88,8 @@ print_ok
 
 print_headline "Install mise"
 
-$BASE_FOLDER/setup_mise.sh
+$BASE_FOLDER/setup_mise.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # Install dev tools via mise
@@ -96,7 +99,8 @@ $BASE_FOLDER/setup_mise.sh
 
 print_headline "Install dev tools via mise"
 
-$BASE_FOLDER/setup_dev_env_via_mise.sh
+$BASE_FOLDER/setup_dev_env_via_mise.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # Global npm packages
@@ -124,7 +128,8 @@ print_todo "Check that the checkboxes 'Use this connection only for resources on
 
 print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
 
-$BASE_FOLDER/setup_gcloud_cli.sh
+$BASE_FOLDER/setup_gcloud_cli.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # AWS CLI (aws)
@@ -142,8 +147,8 @@ $BASE_FOLDER/setup_gcloud_cli.sh
 
 print_headline "Setup Terraform CLI"
 
-$BASE_FOLDER/setup_terraform_cli.sh
-print_ok
+$BASE_FOLDER/setup_terraform_cli.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # IntelliJ IDEA desktop entry
@@ -152,8 +157,8 @@ print_ok
 
 print_headline "Setup IntelliJ IDEA desktop entry"
 
-$BASE_FOLDER/setup_idea_desktop_entry.sh
-print_ok
+$BASE_FOLDER/setup_idea_desktop_entry.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # Minikube
@@ -170,7 +175,8 @@ print_ok
 
 print_headline "Create symlinks"
 
-$BASE_FOLDER/setup_symlinks.sh
+$BASE_FOLDER/setup_symlinks.sh && \
+print_ok || print_fail
 
 ####################################################################################
 # Directory permissions
@@ -179,7 +185,7 @@ $BASE_FOLDER/setup_symlinks.sh
 print_headline "Check/Fix directory permissions"
 
 $BASE_FOLDER/fix_directory_permissions.sh && \
-print_ok
+print_ok || print_fail
 
 ####################################################################################
 # Result

@@ -7,6 +7,7 @@ keepassxc
 podman
 kafkio
 keeperpasswordmanager
+code
 microsoft-edge-stable
 google-chrome-stable
 apache2-utils
