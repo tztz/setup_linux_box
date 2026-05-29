@@ -30,8 +30,8 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo ">>>>  Installing via apt ..."
         $BASE_FOLDER/install_apps_apt.sh
 
-        echo ">>>>  Installing deb files ..."
-        $BASE_FOLDER/install_apps_deb.sh
+        #echo ">>>>  Installing deb files ..."
+        #$BASE_FOLDER/install_apps_deb.sh
 
         echo ">>>>  Installing the Docker engine ..."
         $BASE_FOLDER/install_docker_engine.sh
