@@ -12,4 +12,5 @@ fi
 
 # ---
 
-npm install -g $(cat $BASE_FOLDER/pkglist_npm.txt)
+# Install packages from the list in pkglist_npm.txt (ignoring comments and blank lines)
+grep -v '^\s*#' "$BASE_FOLDER/pkglist_npm.txt" | grep -v '^\s*$' | xargs -r npm install -g

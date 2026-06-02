@@ -8,6 +8,15 @@
 #   - https://certs.rewe-group.com/SubCA/
 #
 
+# Make sure JAVA_HOME points to a real JDK before touching its cacerts.
+# Without this guard, an unset JAVA_HOME would expand to paths like
+# "/lib/security/cacerts" and operate on the wrong files.
+if [ -z "$JAVA_HOME" ] || [ ! -d "$JAVA_HOME/lib/security" ]; then
+    echo "Error: JAVA_HOME is not set or '$JAVA_HOME/lib/security' does not exist." >&2
+    echo "Set JAVA_HOME to a valid JDK (e.g. via SDKMAN!) and run this script again." >&2
+    exit 1
+fi
+
 backup_timestamp=$(date +%Y-%m-%d_%H-%M-%S)
 
 #

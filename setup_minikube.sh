@@ -4,7 +4,7 @@
 minikube_existent=$(command -v minikube)
 if [ "${minikube_existent}" == "" ]; then
     echo "minikube does not exist. Skipping."
-    exit 1
+    exit 0
 fi
 
 # Check whether minikube is already running

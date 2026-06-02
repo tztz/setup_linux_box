@@ -10,7 +10,7 @@ APP_ROOT_FOLDER=$MYAPPS_VENDOR_FOLDER/$GROUP_FOLDER
 if [ -d "$APP_ROOT_FOLDER" ]; then
     echo "AWS CLI already exists. Skipping."
     echo "In order to update, delete folder $APP_ROOT_FOLDER and run this script again."
-    exit 1
+    exit 0
 else
     mkdir -p $APP_ROOT_FOLDER && \
     cd $APP_ROOT_FOLDER && \
