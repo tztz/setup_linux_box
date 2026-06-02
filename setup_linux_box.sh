@@ -77,7 +77,7 @@ print_ok || print_fail
 
 print_headline "Copy Java TrustStore(s) in place"
 
-$BASE_FOLDER/setup_java_truststore.sh && \
+$BASE_FOLDER/setup_java_truststore_rewe.sh && \
 print_ok || print_fail
 
 ####################################################################################
