@@ -34,5 +34,13 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 echo "Start and setup docker service, add user '$USER' to group 'docker'"
 $BASE_FOLDER/setup_docker.sh
 
-# Verify that the installation is successful by running the hello-world image as non-root user
-docker run hello-world
+# Verify the installation by running the hello-world image as the non-root user.
+# The freshly added 'docker' group membership is not active in this shell yet, so
+# use `sg` to run the test in a process that has the group activated (no sudo,
+# no re-login needed).
+if sg docker -c 'docker run --rm hello-world'; then
+    echo "Docker verified successfully (non-root)."
+else
+    echo "Could not verify Docker as non-root in this session."
+    echo "Log out and back in, then try: docker run --rm hello-world"
+fi
