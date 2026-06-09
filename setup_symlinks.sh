@@ -235,9 +235,12 @@ function start {
     create_symlink "$ORIGIN_HOME_FOLDER"                      .ssh                "$HOME_FOLDER"                                0 0
 
     create_symlink "$ORIGIN_HOME_FOLDER/.config"              locale.conf         "$HOME_FOLDER/.config"                        0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.config"              k9s                 "$HOME_FOLDER/.config"                        0 0
     create_symlink "$ORIGIN_HOME_FOLDER/.config/go"           env                 "$HOME_FOLDER/.config/go"                     0 0
     create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       configurations      "$HOME_FOLDER/.config/gcloud"                 0 0
     create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       active_config       "$HOME_FOLDER/.config/gcloud"                 0 0
+
+    create_symlink $ORIGIN_HOME_FOLDER/.local/share/          k9s                 "$HOME_FOLDER/.local/share"                   0 0
 
     #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.config                        0 0
     # Next line because some apps still write into deprecated .local/share/applications/mimeapps.list
