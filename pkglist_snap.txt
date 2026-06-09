@@ -1,3 +1,2 @@
 signal-desktop
 mc-installer
-dbeaver-ce

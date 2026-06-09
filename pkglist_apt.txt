@@ -6,6 +6,7 @@ maven
 keepassxc
 podman
 kafkio
+dbeaver-ce
 keeperpasswordmanager
 code
 microsoft-edge-stable
