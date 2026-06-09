@@ -6,7 +6,7 @@ kubectl
 kubectx
 nodejs
 terraform
-helm
+kubernetes-helm
 kafkactl
 minikube
 rancher
