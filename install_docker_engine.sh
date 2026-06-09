@@ -28,11 +28,11 @@ echo \
 sudo apt update
 
 # Install the Docker packages
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Start and setup docker service
 echo "Start and setup docker service, add user '$USER' to group 'docker'"
-$BASE_FOLDER/setup_docker.sh
+"$BASE_FOLDER/setup_docker.sh"
 
 # Verify the installation by running the hello-world image as the non-root user.
 # The freshly added 'docker' group membership is not active in this shell yet, so

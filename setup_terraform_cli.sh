@@ -7,6 +7,12 @@ if ! command -v terraform &> /dev/null; then
 fi
 
 # Enable tab completion (idempotent: skip if it was already installed)
-if terraform -install-autocomplete 2>&1 | grep -qi "already installed"; then
+output=$(terraform -install-autocomplete 2>&1)
+exit_code=$?
+if echo "$output" | grep -qi "already installed"; then
     echo "Terraform autocomplete already installed. Skipping."
+elif [[ $exit_code -ne 0 ]]; then
+    echo "Warning: terraform -install-autocomplete failed: $output" >&2
+else
+    echo "Terraform autocomplete installed."
 fi

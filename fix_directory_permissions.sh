@@ -14,7 +14,7 @@ paths=(
 )
 
 for path in "${paths[@]}"; do
-    if [ -e "$path" ]; then
+    if [[ -e "$path" ]]; then
         echo "Fixing permissions for     $path"
         chmod -R go-rwx "$path"
     else

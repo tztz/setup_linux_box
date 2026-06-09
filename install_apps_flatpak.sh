@@ -12,4 +12,4 @@ fi
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install applications from the list in pkglist_flatpak.txt (ignoring comments and blank lines)
-grep -v '^\s*#' "$BASE_FOLDER/pkglist_flatpak.txt" | grep -v '^\s*$' | xargs -r flatpak -y install
+grep -v '^\s*#' "$BASE_FOLDER/pkglist_flatpak.txt" | grep -v '^\s*$' | xargs -r flatpak install -y

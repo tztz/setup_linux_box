@@ -12,11 +12,11 @@ ORIGIN_HOME_FOLDER=$HOME/mydata
 # -------------------------------------------------------
 
 function add_trailing_slash_if_needed {
-    local the_path=$1
+    local the_path="${1}"
     local length=${#the_path}
-    local last_char=${the_path:length-1:1}
-    [[ $last_char != "/" ]] && the_path="$the_path/"; :
-    echo $the_path
+    local last_char="${the_path:length-1:1}"
+    [[ "${last_char}" != "/" ]] && the_path="${the_path}/"
+    echo "${the_path}"
 }
 
 #
@@ -69,41 +69,41 @@ function create_symlink {
     local do_create_symlink=1
 
     local sudo_name="$(id -un)"
-    if [ $as_sudo -eq 1 ]; then
+    if [[ $as_sudo -eq 1 ]]; then
         sudo_name="root"
     fi
 
     echo ""
     echo "- Acting as ${sudo_name}"
 
-    if [ $DELETE_ALL_SYMLINKS -eq 1 ]; then
+    if [[ $DELETE_ALL_SYMLINKS -eq 1 ]]; then
         echo "${delete_symlink_msg}"
-        if [ -L "${fq_path_to_dest_target}" ]; then
-            sudo -u ${sudo_name} rm "${fq_path_to_dest_target}"
+        if [[ -L "${fq_path_to_dest_target}" ]]; then
+            sudo -u "${sudo_name}" rm "${fq_path_to_dest_target}"
         fi
         do_create_symlink=0
     fi
 
-    if [ $DELETE_ALL_BACKUPS -eq 1 ]; then
+    if [[ $DELETE_ALL_BACKUPS -eq 1 ]]; then
         echo "${delete_all_backups_msg}"
-        sudo -u ${sudo_name} rm -rf "${fq_path_to_dest_target}".setup_symlinks_backup_*
+        sudo -u "${sudo_name}" rm -rf "${fq_path_to_dest_target}".setup_symlinks_backup_*
         do_create_symlink=0
     fi
 
-    if [ $do_create_symlink -eq 1 ]; then
-        if [ -e "${fq_path_to_origin_target}" ] || [ $force_creating -eq 1 ]; then
+    if [[ $do_create_symlink -eq 1 ]]; then
+        if [[ -e "${fq_path_to_origin_target}" || $force_creating -eq 1 ]]; then
             # Only if target in the origin folder exists or $force_creating is true:
 
             if [[ -e "${fq_path_to_dest_target}" || -L "${fq_path_to_dest_target}" && ! -e "${fq_path_to_dest_target}" ]]; then
                 # If target exists or is broken link
                 echo "${backup_msg}"
-                sudo -u ${sudo_name} mv "${fq_path_to_dest_target}" "${fq_path_to_dest_target}.setup_symlinks_backup_${backup_timestamp}"
+                sudo -u "${sudo_name}" mv "${fq_path_to_dest_target}" "${fq_path_to_dest_target}.setup_symlinks_backup_${backup_timestamp}"
             else
                 echo "Skipping b/c nothing to do: ${backup_msg}"
             fi
 
             echo "${ln_msg}"
-            sudo -u ${sudo_name} ln -s "${fq_path_to_origin_target}" "${fq_path_to_dest_target}"
+            sudo -u "${sudo_name}" ln -s "${fq_path_to_origin_target}" "${fq_path_to_dest_target}"
         else
             echo "Skipping: ${backup_msg}"
             echo "Skipping: ${ln_msg}"
@@ -125,7 +125,7 @@ function confirm {
             ;;
         *)
             # Catch all -> treat as "no".
-            echo $exit_msg
+            echo "$exit_msg"
             echo "Exiting. Bye."
             exit 0
             ;;
@@ -146,7 +146,7 @@ function append_to_file {
         return 0
     else
         echo "Appending '$line' to $target_file"
-        echo -e "\n# Sourcing custom file\n$line" >> $target_file
+        echo -e "\n# Sourcing custom file\n$line" >> "$target_file"
     fi
 }
 
@@ -194,7 +194,7 @@ function start {
         fi
 
         echo_heading "Sourcing custom shell files"
-        append_to_file ". $ORIGIN_HOME_FOLDER/dotfiles-private/${rc_file}_custom" $HOME_FOLDER/$rc_file
+        append_to_file ". $ORIGIN_HOME_FOLDER/dotfiles-private/${rc_file}_custom" "$HOME_FOLDER/$rc_file"
         echo_heading "Done sourcing"
     fi
 
@@ -222,22 +222,22 @@ function start {
     #
     ###
 
-    create_symlink $ORIGIN_HOME_FOLDER/dotfiles-private/    .gitconfig          $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER/dotfiles-private/    .npmrc              $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      bin                 $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      dotfiles-private    $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      tmp                 $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      todo                $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .aws                $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .cert               $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .gnupg              $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .kube               $HOME_FOLDER                                0 0
-    create_symlink $ORIGIN_HOME_FOLDER                      .ssh                $HOME_FOLDER                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/dotfiles-private/"    .gitconfig          "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/dotfiles-private/"    .npmrc              "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      bin                 "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      dotfiles-private    "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      tmp                 "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      todo                "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .aws                "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .cert               "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .gnupg              "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .kube               "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .ssh                "$HOME_FOLDER"                                0 0
 
-    create_symlink $ORIGIN_HOME_FOLDER/.config              locale.conf         $HOME_FOLDER/.config                        0 0
-    create_symlink $ORIGIN_HOME_FOLDER/.config/go           env                 $HOME_FOLDER/.config/go                     0 0
-    create_symlink $ORIGIN_HOME_FOLDER/.config/gcloud       configurations      $HOME_FOLDER/.config/gcloud                 0 0
-    create_symlink $ORIGIN_HOME_FOLDER/.config/gcloud       active_config       $HOME_FOLDER/.config/gcloud                 0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.config"              locale.conf         "$HOME_FOLDER/.config"                        0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.config/go"           env                 "$HOME_FOLDER/.config/go"                     0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       configurations      "$HOME_FOLDER/.config/gcloud"                 0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       active_config       "$HOME_FOLDER/.config/gcloud"                 0 0
 
     #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.config                        0 0
     # Next line because some apps still write into deprecated .local/share/applications/mimeapps.list

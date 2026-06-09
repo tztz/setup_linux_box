@@ -49,7 +49,7 @@ exit 1 || print_ok
 
 print_headline "Download files"
 
-$BASE_FOLDER/download_files.sh && \
+"$BASE_FOLDER/download_files.sh" && \
 print_ok || print_fail
 
 ###################################################################################
@@ -58,7 +58,7 @@ print_ok || print_fail
 
 print_headline "Install packages/apps"
 
-BASE_FOLDER=$BASE_FOLDER $BASE_FOLDER/install_apps.sh && \
+BASE_FOLDER=$BASE_FOLDER "$BASE_FOLDER/install_apps.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -68,7 +68,7 @@ print_ok || print_fail
 
 print_headline "Download and install SDKMAN!, install packages"
 
-$BASE_FOLDER/setup_sdkman.sh && \
+"$BASE_FOLDER/setup_sdkman.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -77,7 +77,7 @@ print_ok || print_fail
 
 print_headline "Copy Java TrustStore(s) in place"
 
-$BASE_FOLDER/setup_java_truststore_rewe.sh && \
+"$BASE_FOLDER/setup_java_truststore_rewe.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -88,7 +88,7 @@ print_ok || print_fail
 
 print_headline "Install Devbox"
 
-$BASE_FOLDER/setup_devbox.sh && \
+"$BASE_FOLDER/setup_devbox.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -97,7 +97,7 @@ print_ok || print_fail
 
 print_headline "Install nix packages via Devbox"
 
-$BASE_FOLDER/install_apps_devbox.sh && \
+"$BASE_FOLDER/install_apps_devbox.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -115,7 +115,7 @@ print_ok || print_fail
 
 print_headline "Setup VPNs"
 
-$BASE_FOLDER/setup_vpn.sh && \
+"$BASE_FOLDER/setup_vpn.sh" && \
 print_todo "Open the VPN config UI and enter your credentials (username, password)" && \
 print_todo "Check that the checkboxes 'Use this connection only for resources on its network' are ticked for IPv4 and IPv6" || \
 print_fail
@@ -127,7 +127,7 @@ print_fail
 
 print_headline "Download, install, and setup Google Cloud CLI (gcloud), install components"
 
-$BASE_FOLDER/setup_gcloud_cli.sh && \
+"$BASE_FOLDER/setup_gcloud_cli.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -146,7 +146,7 @@ print_ok || print_fail
 
 print_headline "Setup Terraform CLI"
 
-$BASE_FOLDER/setup_terraform_cli.sh && \
+"$BASE_FOLDER/setup_terraform_cli.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -156,7 +156,7 @@ print_ok || print_fail
 
 print_headline "Setup IntelliJ IDEA desktop entry"
 
-$BASE_FOLDER/setup_idea_desktop_entry.sh && \
+"$BASE_FOLDER/setup_idea_desktop_entry.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -174,7 +174,7 @@ print_ok || print_fail
 
 print_headline "Create symlinks"
 
-$BASE_FOLDER/setup_symlinks.sh && \
+"$BASE_FOLDER/setup_symlinks.sh" && \
 print_ok || print_fail
 
 ####################################################################################
@@ -183,7 +183,7 @@ print_ok || print_fail
 
 print_headline "Check/Fix directory permissions"
 
-$BASE_FOLDER/fix_directory_permissions.sh && \
+"$BASE_FOLDER/fix_directory_permissions.sh" && \
 print_ok || print_fail
 
 ####################################################################################

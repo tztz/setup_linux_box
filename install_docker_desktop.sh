@@ -11,5 +11,6 @@
 #
 
 # Note: You do not need to log in into Docker Desktop!
+mkdir -p /tmp/debs001
 wget 'https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb' -O /tmp/debs001/docker-desktop-amd64.deb && \
-sudo apt install /tmp/debs001/docker-desktop-amd64.deb
+sudo apt install -y /tmp/debs001/docker-desktop-amd64.deb

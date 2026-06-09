@@ -13,12 +13,19 @@
 #   - https://certs.rewe-group.com/RootCA/ and
 #   - https://certs.rewe-group.com/SubCA/
 #
+# In order to test whether the REWE certs are properly trusted, you can e.g. run a Maven build of a
+# project with a dependency hosted on a REWE server (e.g. Artifactory) and see if it succeeds without
+# SSL errors. Just compile it and set a fresh Maven local repository to avoid cached results and be
+# sure the REWE certs are actually used:
+#
+#    mvn -Dmaven.repo.local=/tmp/m2repo clean compile
+# 
 
 # Make sure JAVA_HOME points to a real JDK before touching its cacerts.
 # Without this guard, an unset JAVA_HOME would expand to paths like
 # "/lib/security/cacerts" and operate on the wrong files.
-if [ -z "$JAVA_HOME" ] || [ ! -d "$JAVA_HOME/lib/security" ]; then
-    echo "Error: JAVA_HOME is not set or '$JAVA_HOME/lib/security' does not exist." >&2
+if [[ -z "${JAVA_HOME}" || ! -d "${JAVA_HOME}/lib/security" ]]; then
+    echo "Error: JAVA_HOME is not set or '${JAVA_HOME}/lib/security' does not exist." >&2
     echo "Set JAVA_HOME to a valid JDK (e.g. via SDKMAN!) and run this script again." >&2
     exit 1
 fi
@@ -91,29 +98,29 @@ REWE_CERTS=(
 # The original cacerts is backed up first (see the backups/ folder).
 #
 import_rewedigital_certs() {
-    local sec_dir="$JAVA_HOME/lib/security"
+    local sec_dir="${JAVA_HOME}/lib/security"
     local src_certs_dir=~/mydata/auth_certificates_keys/rewedigital/java/cacerts
-    local work_dir="$sec_dir/rewedigital_certs"
+    local work_dir="${sec_dir}/rewedigital_certs"
     local new_store="rewedigital_truststore.jks"
-    local pristine_backup="$sec_dir/backups/cacerts.pristine"
+    local pristine_backup="${sec_dir}/backups/cacerts.pristine"
 
     # Back up the PRISTINE cacerts exactly once. Subsequent imports must NOT
     # overwrite it: otherwise the backup would capture an already-modified
     # (REWE-containing) cacerts and undo could never fully restore the original.
-    mkdir -p "$sec_dir/backups/" || return 1
-    if [ ! -f "$pristine_backup" ]; then
-        cp "$sec_dir/cacerts" "$pristine_backup" || return 1
+    mkdir -p "${sec_dir}/backups/" || return 1
+    if [[ ! -f "${pristine_backup}" ]]; then
+        cp "${sec_dir}/cacerts" "${pristine_backup}" || return 1
     fi
 
     # Create a fresh working directory holding the REWE certificates
-    rm -rf "$work_dir" || return 1
-    mkdir -p "$work_dir" || return 1
-    cp "$src_certs_dir"/* "$work_dir/" || return 1
-    cd "$work_dir" || return 1
+    rm -rf "${work_dir}" || return 1
+    mkdir -p "${work_dir}" || return 1
+    cp "${src_certs_dir}"/* "${work_dir}/" || return 1
+    cd "${work_dir}" || return 1
 
     # 1. Start from the ready-made REWE bundle (JKS) as the base TrustStore.
-    rm -f "./$new_store" || return 1
-    cp ./cacerts_rewedigital.cer "./$new_store" || return 1
+    rm -f "./${new_store}" || return 1
+    cp ./cacerts_rewedigital.cer "./${new_store}" || return 1
 
     # 2. Merge the JDK's stock public CAs on top. Use the PRISTINE cacerts (not
     #    the active one): after the first import the active cacerts is already the
@@ -122,8 +129,8 @@ import_rewedigital_certs() {
     #    -noprompt overwrites entries with matching aliases; bundle-only entries
     #    (the REWE CAs) are preserved.
     keytool -importkeystore \
-        -srckeystore "$pristine_backup" -srcstorepass "${CACERTS_PASSWORD}" \
-        -destkeystore "./$new_store" -deststoretype JKS -deststorepass "${CACERTS_PASSWORD}" \
+        -srckeystore "${pristine_backup}" -srcstorepass "${CACERTS_PASSWORD}" \
+        -destkeystore "./${new_store}" -deststoretype JKS -deststorepass "${CACERTS_PASSWORD}" \
         -noprompt || return 1
 
     # 3. Import the individual REWE certs idempotently (delete any existing alias
@@ -132,17 +139,17 @@ import_rewedigital_certs() {
     for entry in "${REWE_CERTS[@]}"; do
         cert_alias="${entry%%|*}"
         cert_file="${entry#*|}"
-        keytool -delete -alias "$cert_alias" -keystore "./$new_store" \
+        keytool -delete -alias "${cert_alias}" -keystore "./${new_store}" \
             -storepass "${CACERTS_PASSWORD}" -noprompt >/dev/null 2>&1
-        keytool -import -alias "$cert_alias" -keystore "./$new_store" -file "$cert_file" \
+        keytool -import -alias "${cert_alias}" -keystore "./${new_store}" -file "${cert_file}" \
             -trustcacerts -noprompt -storepass "${CACERTS_PASSWORD}" || return 1
     done
 
     # Keep a copy of the new TrustStore next to the original one ...
-    cp "$work_dir/$new_store" "$sec_dir/" || return 1
+    cp "${work_dir}/${new_store}" "${sec_dir}/" || return 1
     # ... and install it as the active cacerts so the default Java TrustStore
     # (used by Maven, etc.) actually trusts the REWE certs.
-    cp "$work_dir/$new_store" "$sec_dir/cacerts" || return 1
+    cp "${work_dir}/${new_store}" "${sec_dir}/cacerts" || return 1
 }
 
 #
@@ -153,30 +160,30 @@ import_rewedigital_certs() {
 #   - Removes the working directory with the copied REWE certificates.
 #
 undo_import_rewedigital_certs() {
-    local sec_dir="$JAVA_HOME/lib/security"
-    local work_dir="$sec_dir/rewedigital_certs"
+    local sec_dir="${JAVA_HOME}/lib/security"
+    local work_dir="${sec_dir}/rewedigital_certs"
     local new_store="rewedigital_truststore.jks"
-    local pristine_backup="$sec_dir/backups/cacerts.pristine"
+    local pristine_backup="${sec_dir}/backups/cacerts.pristine"
 
     # Restore the pristine cacerts captured before the first import. This fully
     # removes EVERY REWE cert (including the bundle's own aliases such as
     # "reweroot" / "rs root ca02"), which a per-alias delete cannot reliably do
     # because the bundle's aliases differ from the .cer file aliases.
-    if [ -f "$pristine_backup" ]; then
-        echo "Restoring pristine cacerts from: $pristine_backup"
-        cp "$pristine_backup" "$sec_dir/cacerts" || return 1
+    if [[ -f "${pristine_backup}" ]]; then
+        echo "Restoring pristine cacerts from ${pristine_backup}"
+        cp "${pristine_backup}" "${sec_dir}/cacerts" || return 1
         # Drop the pristine backup; the active cacerts is clean again, so a later
         # import will re-capture a fresh pristine copy.
-        rm -f "$pristine_backup"
+        rm -f "${pristine_backup}"
     else
-        echo "Warning: no pristine cacerts backup found ($pristine_backup); cacerts left unchanged." >&2
+        echo "Warning: no pristine cacerts backup found (${pristine_backup}); cacerts left unchanged." >&2
     fi
 
     # Remove the generated truststore copy placed next to cacerts ...
-    rm -f "$sec_dir/$new_store"
+    rm -f "${sec_dir}/${new_store}"
     # ... and the working directory with the copied REWE certificates
     # (this also removes the working copy of the generated truststore).
-    rm -rf "$work_dir"
+    rm -rf "${work_dir}"
 }
 
 import_rewedigital_certs

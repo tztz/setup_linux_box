@@ -1,16 +1,13 @@
 #!/bin/bash
 
 # Check whether `minikube` is installed
-minikube_existent=$(command -v minikube)
-if [ "${minikube_existent}" == "" ]; then
+if ! command -v minikube &> /dev/null; then
     echo "minikube does not exist. Skipping."
     exit 0
 fi
 
 # Check whether minikube is already running
-minikube status > /dev/null
-minikube_status=$?
-if [ $minikube_status == 0 ]; then
+if minikube status &> /dev/null; then
     echo "minikube is already running. Skipping."
     exit 0
 fi

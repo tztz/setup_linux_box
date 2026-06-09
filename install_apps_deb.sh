@@ -10,17 +10,17 @@
 #
 
 FOLDER=/tmp/debs001
-mkdir -p ${FOLDER}
+mkdir -p "${FOLDER}"
 
 download_deb() {
     local DEB_URL=$1
     local DEB_NAME=$2
-    wget ${DEB_URL} -O ${FOLDER}/${DEB_NAME}
+    wget "${DEB_URL}" -O "${FOLDER}/${DEB_NAME}"
 }
 
 install_deb() {
     local DEB_NAME=$1
-    sudo apt install ${FOLDER}/${DEB_NAME}
+    sudo apt install -y "${FOLDER}/${DEB_NAME}"
 }
 
 # ---
