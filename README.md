@@ -81,6 +81,15 @@ After restoring the backup and running `setup_linux_box.sh`, new backups can be 
 - Log in to JetBrains account
 - Activate license
 
+### Kafkio
+
+ - Restore the Kafkio config (i.e. copy the `config` directory) from `~/mydata/backups/kafkio/...` to `~/.local/share/kafkio`
+
+### DBeaver
+
+ - Open DBeaver
+ - Import the DBeaver backup (export) from `~/mydata/backups/dbeaver/...`
+
 ### VPN
 
 The VPN configs are created during setup. After setup, add your credentials via the network manager settings UI (e.g. GNOME Settings → Network → VPN).
