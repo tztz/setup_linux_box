@@ -6,6 +6,11 @@
 # The import is idempotent, so it can be re-run if the REWE certs are updated (e.g. new device CAs).
 # The undo function restores the original cacerts from the backup, fully removing all REWE certs.
 #
+# Usage:
+#    ./setup_java_truststore_rewe.sh [/path/to/java/home]
+#
+# If no argument is given, $JAVA_HOME is used by default.
+#
 # The REWE certs are expected to be found in ~/mydata/auth_certificates_keys/rewedigital/java/cacerts,
 # which is not part of this repo.
 #
@@ -21,14 +26,20 @@
 #    mvn -Dmaven.repo.local=/tmp/m2repo clean compile
 # 
 
-# Make sure JAVA_HOME points to a real JDK before touching its cacerts.
-# Without this guard, an unset JAVA_HOME would expand to paths like
+# Accept an optional Java home path as the first argument; default to $JAVA_HOME.
+JAVA_HOME_DIR="${1:-$JAVA_HOME}"
+
+# Make sure the resolved Java home points to a real JDK before touching its cacerts.
+# Without this guard, an unset/empty path would expand to paths like
 # "/lib/security/cacerts" and operate on the wrong files.
-if [[ -z "${JAVA_HOME}" || ! -d "${JAVA_HOME}/lib/security" ]]; then
-    echo "Error: JAVA_HOME is not set or '${JAVA_HOME}/lib/security' does not exist." >&2
-    echo "Set JAVA_HOME to a valid JDK (e.g. via SDKMAN!) and run this script again." >&2
+if [[ -z "${JAVA_HOME_DIR}" || ! -d "${JAVA_HOME_DIR}/lib/security" ]]; then
+    echo "Error: Java home is not set or '${JAVA_HOME_DIR}/lib/security' does not exist." >&2
+    echo "Usage: $0 [/path/to/java/home]" >&2
+    echo "If no path is given, JAVA_HOME is used (currently: '${JAVA_HOME:-<unset>}')." >&2
     exit 1
 fi
+
+echo "Going to operate on Java home: ${JAVA_HOME_DIR}"
 
 backup_timestamp=$(date +%Y-%m-%d_%H-%M-%S)
 
@@ -98,7 +109,7 @@ REWE_CERTS=(
 # The original cacerts is backed up first (see the backups/ folder).
 #
 import_rewedigital_certs() {
-    local sec_dir="${JAVA_HOME}/lib/security"
+    local sec_dir="${JAVA_HOME_DIR}/lib/security"
     local src_certs_dir=~/mydata/auth_certificates_keys/rewedigital/java/cacerts
     local work_dir="${sec_dir}/rewedigital_certs"
     local new_store="rewedigital_truststore.jks"
@@ -160,7 +171,7 @@ import_rewedigital_certs() {
 #   - Removes the working directory with the copied REWE certificates.
 #
 undo_import_rewedigital_certs() {
-    local sec_dir="${JAVA_HOME}/lib/security"
+    local sec_dir="${JAVA_HOME_DIR}/lib/security"
     local work_dir="${sec_dir}/rewedigital_certs"
     local new_store="rewedigital_truststore.jks"
     local pristine_backup="${sec_dir}/backups/cacerts.pristine"
