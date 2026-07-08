@@ -13,4 +13,4 @@ grep -v '^\s*#' "$BASE_FOLDER/pkglist_devbox.txt" | grep -v '^\s*$' | xargs -r d
 
 # -------------
 
-eval "$(devbox global shellenv)"
+eval "$(devbox global shellenv)" # aka `refresh-global`
