@@ -257,10 +257,12 @@ function start {
     # end - SETTING UP THE SYMLINKS
     # -------------------------------------------------------
 
-    echo ""
-    echo "Done setting up symlinks. Close terminal now."
-    echo ""
-    echo "After checking the just created backups consider deleting them (be cautious!) by executing setup_symlinks.sh --delete-all-backups"
+    if [[ $do_create_symlinks -eq 1 ]]; then
+        echo ""
+        echo "Done setting up symlinks. Close terminal now."
+        echo ""
+        echo "After checking the just created backups consider deleting them (be cautious!) by executing setup_symlinks.sh --delete-all-backups"
+    fi
 }
 
 start "${1:-}"
