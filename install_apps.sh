@@ -24,9 +24,6 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
         echo ">>>>  Installing flatpak applications ..."
         "$BASE_FOLDER/install_apps_flatpak.sh"
     else
-        echo ">>>>  apt update ..."
-        sudo apt update
-
         echo ">>>>  Installing via apt ..."
         "$BASE_FOLDER/install_apps_apt.sh"
 
