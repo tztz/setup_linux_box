@@ -13,13 +13,13 @@ fi
 # --- First, add the GPG keys
 
 # Microsoft signing key
-curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/microsoft.gpg
 
 # Google signing key
-curl -sSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+curl -sSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/google-chrome.gpg
 
 # DBeaver signing key
-curl -sSL https://dbeaver.io/debs/dbeaver.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/dbeaver.gpg
+curl -sSL https://dbeaver.io/debs/dbeaver.gpg.key | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/dbeaver.gpg
 
 # --- Next, add the repository entries for the applications (with the correct
 # --- signed-by option to reference the GPG keys added above)

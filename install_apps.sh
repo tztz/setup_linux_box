@@ -11,10 +11,11 @@ if [[ "$BASE_FOLDER" == '' ]]; then
     BASE_FOLDER=~/mydata/projects/private/shell-tools/setup_linux_box
 fi
 
-OPERATING_SYSTEM=$(uname -o)
-LINUX_DISTRIBUTION=$(sed -nE 's/^NAME="(.*)"$/\1/p' /etc/os-release)
+OPERATING_SYSTEM=$(uname -s)
 
-if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
+if [[ "${OPERATING_SYSTEM}" == 'Linux' ]]; then
+    LINUX_DISTRIBUTION=$(sed -nE 's/^NAME="(.*)"$/\1/p' /etc/os-release)
+
     # Install Linux apps ...
 
     if [[ "${LINUX_DISTRIBUTION}" == 'EndeavourOS' || "${LINUX_DISTRIBUTION}" == 'Arch Linux' ]]; then
@@ -38,7 +39,7 @@ if [[ "${OPERATING_SYSTEM}" == 'GNU/Linux' ]]; then
     fi
 fi
 
-if [[ "$OPERATING_SYSTEM" == 'Darwin' ]]; then
+if [[ "${OPERATING_SYSTEM}" == 'Darwin' ]]; then
     # Install macOS apps ...
 
     echo "TODO: Install macOS apps"

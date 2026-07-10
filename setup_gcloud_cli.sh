@@ -12,24 +12,24 @@ if [[ -d "${APP_ROOT_FOLDER}" ]]; then
     echo "In order to update, delete folder ${APP_ROOT_FOLDER} and run this script again."
     exit 0
 else
-    mkdir -p "${APP_ROOT_FOLDER}" && \
-    cd "${APP_ROOT_FOLDER}" && \
-    rm -rf "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}" && \
-    curl -s -L "${DOWNLOAD_URI}" | tar -xzv && \
-    "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/install.sh" -q --path-update True --command-completion True && \
+    mkdir -p "${APP_ROOT_FOLDER}" &&
+    cd "${APP_ROOT_FOLDER}" &&
+    rm -rf "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}" &&
+    curl -s -L "${DOWNLOAD_URI}" | tar -xzv &&
+    "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/install.sh" -q --path-update True --command-completion True &&
 
     # Update all components
-    "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components update && \
+    "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components update &&
 
     #
     # Install components
     #
 
     # Do not install kubectl here! It's installed during execution of install_apps.sh
-    #"${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components install kubectl && \
+    #"${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components install kubectl &&
 
     # Install gke-gcloud-auth-plugin
-    "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components install gke-gcloud-auth-plugin
+    "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components install gke-gcloud-auth-plugin &&
 
     # Install cloud-sql-proxy
     "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/bin/gcloud" -q components install cloud-sql-proxy

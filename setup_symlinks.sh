@@ -240,7 +240,7 @@ function start {
     create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       configurations      "$HOME_FOLDER/.config/gcloud"                 0 0
     create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       active_config       "$HOME_FOLDER/.config/gcloud"                 0 0
 
-    create_symlink $ORIGIN_HOME_FOLDER/.local/share/          k9s                 "$HOME_FOLDER/.local/share"                   0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.local/share/"        k9s                 "$HOME_FOLDER/.local/share"                   0 0
 
     #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.config                        0 0
     # Next line because some apps still write into deprecated .local/share/applications/mimeapps.list
@@ -263,4 +263,4 @@ function start {
     echo "After checking the just created backups consider deleting them (be cautious!) by executing setup_symlinks.sh --delete-all-backups"
 }
 
-start $1
+start "${1:-}"
