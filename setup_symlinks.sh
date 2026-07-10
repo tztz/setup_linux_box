@@ -218,12 +218,12 @@ function start {
     # create_symlink <source parent folder> <target folder> <dest parent folder> <as_sudo 0|1> <force_creating 0|1>
     #
     # Example:
-    # create_symlink $ORIGIN_HOME_FOLDER/.local/share/      fonts               $HOME_FOLDER/.local/share                   0 0
+    # create_symlink "$ORIGIN_HOME_FOLDER/.local/share"       k9s                 "$HOME_FOLDER/.local/share"                   0 0
     #
     ###
 
-    create_symlink "$ORIGIN_HOME_FOLDER/dotfiles-private/"    .gitconfig          "$HOME_FOLDER"                                0 0
-    create_symlink "$ORIGIN_HOME_FOLDER/dotfiles-private/"    .npmrc              "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/dotfiles-private"     .gitconfig          "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/dotfiles-private"     .npmrc              "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      bin                 "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      dotfiles-private    "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      tmp                 "$HOME_FOLDER"                                0 0
@@ -239,19 +239,21 @@ function start {
     create_symlink "$ORIGIN_HOME_FOLDER/.config/go"           env                 "$HOME_FOLDER/.config/go"                     0 0
     create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       configurations      "$HOME_FOLDER/.config/gcloud"                 0 0
     create_symlink "$ORIGIN_HOME_FOLDER/.config/gcloud"       active_config       "$HOME_FOLDER/.config/gcloud"                 0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.config/Code/User"    prompts             "$HOME_FOLDER/.config/Code/User"              0 0
 
-    create_symlink "$ORIGIN_HOME_FOLDER/.local/share/"        k9s                 "$HOME_FOLDER/.local/share"                   0 0
+    create_symlink "$ORIGIN_HOME_FOLDER/.local/share"         k9s                 "$HOME_FOLDER/.local/share"                   0 0
 
-    #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.config                        0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER/.config"             mimeapps.list       "$HOME_FOLDER/.config"                        0 0
     # Next line because some apps still write into deprecated .local/share/applications/mimeapps.list
-    #create_symlink $ORIGIN_HOME_FOLDER/.config/            mimeapps.list       $HOME_FOLDER/.local/share/applications      0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER/.config"             mimeapps.list       "$HOME_FOLDER/.local/share/applications"      0 0
 
     # Not needed:
-    #create_symlink $ORIGIN_HOME_FOLDER/.local/share/       Steam               $HOME_FOLDER/.local/share                   0 0
+    #create_symlink $ORIGIN_HOME_FOLDER/.local/share        Steam               $HOME_FOLDER/.local/share                   0 0
     #create_symlink $ORIGIN_HOME_FOLDER                     docs                $HOME_FOLDER/Documents                      0 0
     #create_symlink $ORIGIN_HOME_FOLDER                     images              $HOME_FOLDER/Pictures                       0 0
     #create_symlink $ORIGIN_HOME_FOLDER                     videos              $HOME_FOLDER/Videos                         0 0
     #create_symlink $ORIGIN_HOME_FOLDER                     audio               $HOME_FOLDER/Music                          0 0
+    # end - Not needed
 
     #
     # end - SETTING UP THE SYMLINKS
