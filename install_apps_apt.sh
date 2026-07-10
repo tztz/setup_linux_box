@@ -42,4 +42,4 @@ sudo apt update
 # -------------
 
 # Install applications from the list in pkglist_apt.txt (ignoring comments and blank lines)
-grep -v '^\s*#' "$BASE_FOLDER/pkglist_apt.txt" | grep -v '^\s*$' | xargs sudo apt -y install
+grep -v '^\s*#' "$BASE_FOLDER/pkglist_apt.txt" | grep -v '^\s*$' | xargs -r sudo apt -y install
