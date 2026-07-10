@@ -141,7 +141,7 @@ function append_to_file {
         touch "$2"
     fi
 
-    if grep -q "^$line$" "$target_file" ; then
+    if grep -qxF "$line" "$target_file" ; then
         echo "Nothing to do for $target_file ... skipping."
         return 0
     else
@@ -158,7 +158,7 @@ function echo_heading {
 # -------------------------------------------------------
 
 function start {
-    local operating_system=$(uname -o)
+    local operating_system=$(uname -s)
     local run_mode="${1}"
 
     echo "HOME_FOLDER:        $HOME_FOLDER"
@@ -187,7 +187,7 @@ function start {
         if [[ "$operating_system" == 'Darwin' ]]; then
             rc_file=".zshrc"
         fi
-        if [[ "$operating_system" == 'GNU/Linux' ]]; then
+        if [[ "$operating_system" == 'Linux' ]]; then
             if [ -f "$HOME_FOLDER/.zshrc" ] ; then
                 rc_file=".zshrc"
             fi

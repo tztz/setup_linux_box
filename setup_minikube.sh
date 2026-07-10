@@ -13,7 +13,7 @@ if minikube status &> /dev/null; then
 fi
 
 # Start minikube (download if needed)
-minikube start && \
-minikube addons enable ingress && \
-minikube addons enable ingress-dns && \
+minikube start &&
+minikube addons enable ingress &&
+minikube addons enable ingress-dns &&
 minikube status
