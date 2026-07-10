@@ -127,34 +127,37 @@ import_rewedigital_certs() {
     rm -rf "${work_dir}" || return 1
     mkdir -p "${work_dir}" || return 1
     cp "${src_certs_dir}"/* "${work_dir}/" || return 1
-    cd "${work_dir}" || return 1
 
-    # 1. Start from the ready-made REWE bundle (JKS) as the base TrustStore.
-    rm -f "./${new_store}" || return 1
-    cp ./cacerts_rewedigital.cer "./${new_store}" || return 1
+    # Run keytool operations in a subshell to avoid changing the caller's CWD
+    (
+        cd "${work_dir}" || exit 1
 
-    # 2. Merge the JDK's stock public CAs on top. Use the PRISTINE cacerts (not
-    #    the active one): after the first import the active cacerts is already the
-    #    merged store, so merging it again would re-add its REWE certs under the
-    #    bundle's own aliases and inflate the entry count -> not idempotent.
-    #    -noprompt overwrites entries with matching aliases; bundle-only entries
-    #    (the REWE CAs) are preserved.
-    keytool -importkeystore \
-        -srckeystore "${pristine_backup}" -srcstorepass "${CACERTS_PASSWORD}" \
-        -destkeystore "./${new_store}" -deststoretype JKS -deststorepass "${CACERTS_PASSWORD}" \
-        -noprompt || return 1
+        # 1. Start from the ready-made REWE bundle (JKS) as the base TrustStore.
+        rm -f "./${new_store}" || exit 1
+        cp ./cacerts_rewedigital.cer "./${new_store}" || exit 1
 
-    # 3. Import the individual REWE certs idempotently (delete any existing alias
-    #    first so re-runs do not fail with "alias already exists").
-    local entry cert_alias cert_file
-    for entry in "${REWE_CERTS[@]}"; do
-        cert_alias="${entry%%|*}"
-        cert_file="${entry#*|}"
-        keytool -delete -alias "${cert_alias}" -keystore "./${new_store}" \
-            -storepass "${CACERTS_PASSWORD}" -noprompt >/dev/null 2>&1
-        keytool -import -alias "${cert_alias}" -keystore "./${new_store}" -file "${cert_file}" \
-            -trustcacerts -noprompt -storepass "${CACERTS_PASSWORD}" || return 1
-    done
+        # 2. Merge the JDK's stock public CAs on top. Use the PRISTINE cacerts (not
+        #    the active one): after the first import the active cacerts is already the
+        #    merged store, so merging it again would re-add its REWE certs under the
+        #    bundle's own aliases and inflate the entry count -> not idempotent.
+        #    -noprompt overwrites entries with matching aliases; bundle-only entries
+        #    (the REWE CAs) are preserved.
+        keytool -importkeystore \
+            -srckeystore "${pristine_backup}" -srcstorepass "${CACERTS_PASSWORD}" \
+            -destkeystore "./${new_store}" -deststoretype JKS -deststorepass "${CACERTS_PASSWORD}" \
+            -noprompt || exit 1
+
+        # 3. Import the individual REWE certs idempotently (delete any existing alias
+        #    first so re-runs do not fail with "alias already exists").
+        for entry in "${REWE_CERTS[@]}"; do
+            cert_alias="${entry%%|*}"
+            cert_file="${entry#*|}"
+            keytool -delete -alias "${cert_alias}" -keystore "./${new_store}" \
+                -storepass "${CACERTS_PASSWORD}" -noprompt >/dev/null 2>&1
+            keytool -import -alias "${cert_alias}" -keystore "./${new_store}" -file "${cert_file}" \
+                -trustcacerts -noprompt -storepass "${CACERTS_PASSWORD}" || exit 1
+        done
+    ) || return 1
 
     # Keep a copy of the new TrustStore next to the original one ...
     cp "${work_dir}/${new_store}" "${sec_dir}/" || return 1

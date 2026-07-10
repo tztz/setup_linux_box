@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 
 BASE_FOLDER=~/mydata/projects/private/shell-tools/setup_linux_box
 
