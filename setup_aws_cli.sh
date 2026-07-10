@@ -15,7 +15,7 @@ else
     mkdir -p "${APP_ROOT_FOLDER}" &&
     cd "${APP_ROOT_FOLDER}" &&
     rm -rf "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}" &&
-    curl -s -L "${DOWNLOAD_URI}" -o "awscliv2.zip" &&
+    curl -fsSL "${DOWNLOAD_URI}" -o "awscliv2.zip" &&
     unzip -u awscliv2.zip &&
     "${APP_ROOT_FOLDER}/aws/install" --install-dir "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}" --bin-dir ~/bin/common/aws-cli --update &&
     rm -rf awscliv2.zip

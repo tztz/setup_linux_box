@@ -15,7 +15,7 @@ else
     mkdir -p "${APP_ROOT_FOLDER}" &&
     cd "${APP_ROOT_FOLDER}" &&
     rm -rf "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}" &&
-    curl -s -L "${DOWNLOAD_URI}" | tar -xzv &&
+    curl -fsSL "${DOWNLOAD_URI}" | tar -xzv &&
     "${APP_ROOT_FOLDER}/${APP_FOLDER_NAME}/install.sh" -q --path-update True --command-completion True &&
 
     # Update all components
