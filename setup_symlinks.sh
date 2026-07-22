@@ -230,7 +230,7 @@ function start {
     create_symlink "$ORIGIN_HOME_FOLDER"                      todo                "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .aws                "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .cert               "$HOME_FOLDER"                                0 0
-    create_symlink "$ORIGIN_HOME_FOLDER"                      .github             "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .copilot            "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .gnupg              "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .kube               "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .ssh                "$HOME_FOLDER"                                0 0
