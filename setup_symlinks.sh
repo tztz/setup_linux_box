@@ -215,7 +215,7 @@ function start {
     ###
     #
     # Usage:
-    # create_symlink <source parent folder> <target folder> <dest parent folder> <as_sudo 0|1> <force_creating 0|1>
+    # create_symlink <source parent folder> <target folder/file> <dest parent folder> <as_sudo 0|1> <force_creating 0|1>
     #
     # Example:
     # create_symlink "$ORIGIN_HOME_FOLDER/.local/share"       k9s                 "$HOME_FOLDER/.local/share"                   0 0
@@ -230,6 +230,7 @@ function start {
     create_symlink "$ORIGIN_HOME_FOLDER"                      todo                "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .aws                "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .cert               "$HOME_FOLDER"                                0 0
+    create_symlink "$ORIGIN_HOME_FOLDER"                      .github             "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .gnupg              "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .kube               "$HOME_FOLDER"                                0 0
     create_symlink "$ORIGIN_HOME_FOLDER"                      .ssh                "$HOME_FOLDER"                                0 0
@@ -248,11 +249,11 @@ function start {
     #create_symlink "$ORIGIN_HOME_FOLDER/.config"             mimeapps.list       "$HOME_FOLDER/.local/share/applications"      0 0
 
     # Not needed:
-    #create_symlink $ORIGIN_HOME_FOLDER/.local/share        Steam               $HOME_FOLDER/.local/share                   0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     docs                $HOME_FOLDER/Documents                      0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     images              $HOME_FOLDER/Pictures                       0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     videos              $HOME_FOLDER/Videos                         0 0
-    #create_symlink $ORIGIN_HOME_FOLDER                     audio               $HOME_FOLDER/Music                          0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER/.local/share"        Steam               "$HOME_FOLDER/.local/share"                   0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER"                     docs                "$HOME_FOLDER/Documents"                      0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER"                     images              "$HOME_FOLDER/Pictures"                       0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER"                     videos              "$HOME_FOLDER/Videos"                         0 0
+    #create_symlink "$ORIGIN_HOME_FOLDER"                     audio               "$HOME_FOLDER/Music"                          0 0
     # end - Not needed
 
     #
