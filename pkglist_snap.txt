@@ -1,3 +1,4 @@
 signal-desktop
 mc-installer
 steam
+discord
